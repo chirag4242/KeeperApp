@@ -12,6 +12,13 @@ function App() {
       return [...preValue, data];
     });
   }
+  function deleteNote(id) {
+    setNotes((preValue) => {
+      return preValue.filter((noteItem, index) => {
+        return index !== id;
+      });
+    });
+  }
   return (
     <div>
       <Header />
@@ -23,6 +30,7 @@ function App() {
             id={index}
             title={NewnNote.title}
             content={NewnNote.content}
+            deleteOn={deleteNote}
           />
         );
       })}
